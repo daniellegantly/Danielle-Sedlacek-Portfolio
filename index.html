@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danielle Sedlacek — Photography & Film</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --ink: #171714;
+    --stone: #6B6864;
+    --line: #E4E1DA;
+    --moss: #4B5A3E;
+    --moss-deep: #384630;
+    --card-a: #EDEAE2;
+    --card-b: #E3E6DC;
+    --card-c: #DDE1DA;
+    font-family: Inter, system-ui, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #171714; --ink: #F4F2EC; --stone: #A6A29A; --line: #302F2B;
+      --card-a: #232320; --card-b: #212420; --card-c: #1F2220;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #171714; --ink: #F4F2EC; --stone: #A6A29A; --line: #302F2B;
+    --card-a: #232320; --card-b: #212420; --card-c: #1F2220;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+
+  /* Nav */
+  header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 20px; padding-bottom: 20px;
+  }
+  .wordmark { font-family: Fraunces, serif; font-size: 20px; font-weight: 500; letter-spacing: -0.01em; text-decoration: none; }
+  .navlinks { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
+  .navlinks a { font-size: 14px; text-decoration: none; color: var(--stone); transition: color .2s; }
+  .navlinks a:hover, .navlinks a:focus-visible { color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: 96px 0 64px; }
+  .hero-eyebrow { font-size: 14px; color: var(--moss); margin: 0 0 18px; }
+  .hero h1 {
+    font-family: Fraunces, serif;
+    font-weight: 400;
+    font-size: clamp(40px, 7vw, 76px);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 0 0 28px;
+    max-width: 15ch;
+  }
+  .hero p { font-size: 18px; line-height: 1.6; color: var(--stone); max-width: 46ch; margin: 0 0 36px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 24px; border-radius: 2px; font-size: 14px; text-decoration: none;
+    border: 1px solid var(--ink); transition: background .2s, color .2s;
+  }
+  .btn-solid { background: var(--ink); color: var(--bg); }
+  .btn-solid:hover { background: var(--moss-deep); border-color: var(--moss-deep); }
+  .btn-ghost { color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+
+  /* Section heading */
+  .section { padding: 88px 0; border-top: 1px solid var(--line); }
+  .section-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 24px; margin-bottom: 48px; flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-family: Fraunces, serif; font-weight: 400; font-size: clamp(28px, 4vw, 38px);
+    margin: 0; letter-spacing: -0.01em;
+  }
+  .section-head p { color: var(--stone); font-size: 15px; margin: 0; max-width: 34ch; }
+
+  /* Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+  }
+  .tile {
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex; align-items: flex-end;
+    min-height: 200px;
+    isolation: isolate;
+  }
+  .tile::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(135deg, color-mix(in srgb, var(--ink) 6%, transparent) 0 2px, transparent 2px 26px);
+    opacity: .5;
+  }
+  .tile-a { background: var(--card-a); }
+  .tile-b { background: var(--card-b); }
+  .tile-c { background: var(--card-c); }
+  .tile-cap {
+    position: relative; z-index: 1; width: 100%;
+    padding: 16px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--stone);
+    background: linear-gradient(to top, color-mix(in srgb, var(--bg) 55%, transparent), transparent);
+  }
+  .tile-cap .kind { color: var(--moss); }
+  .t-wide { grid-column: span 4; aspect-ratio: 4/3; }
+  .t-tall { grid-column: span 2; aspect-ratio: 3/4; grid-row: span 2; }
+  .t-sq   { grid-column: span 2; aspect-ratio: 1/1; }
+  .t-video {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .play {
+    position: relative; z-index: 1;
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--ink) 35%, transparent);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .play svg { width: 16px; height: 16px; fill: var(--ink); margin-left: 2px; }
+
+  @media (max-width: 720px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .t-wide, .t-tall, .t-sq { grid-column: span 2; aspect-ratio: 4/3; grid-row: auto; }
+  }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; }
+  .about-portrait {
+    aspect-ratio: 4/5; border-radius: 2px; background: var(--card-a); position: relative; overflow: hidden;
+  }
+  .about-portrait::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(135deg, color-mix(in srgb, var(--ink) 6%, transparent) 0 2px, transparent 2px 26px);
+    opacity: .5;
+  }
+  .about h2 { font-family: Fraunces, serif; font-weight: 400; font-size: clamp(26px, 3.6vw, 34px); margin: 0 0 20px; }
+  .about p { color: var(--stone); font-size: 16px; line-height: 1.75; max-width: 52ch; margin: 0 0 16px; }
+  .stats { display: flex; gap: 40px; margin-top: 32px; }
+  .stat b { font-family: Fraunces, serif; font-size: 28px; font-weight: 400; display: block; }
+  .stat span { font-size: 13px; color: var(--stone); }
+  @media (max-width: 720px) { .about { grid-template-columns: 1fr; } }
+
+  /* Contact */
+  .contact { text-align: left; }
+  .contact h2 {
+    font-family: Fraunces, serif; font-weight: 400;
+    font-size: clamp(32px, 5.5vw, 56px); letter-spacing: -0.01em; margin: 0 0 24px; max-width: 16ch;
+  }
+  .contact-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .contact-email { font-size: 18px; text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+  .social { display: flex; gap: 24px; list-style: none; padding: 0; margin: 0; }
+  .social a { font-size: 14px; color: var(--stone); text-decoration: none; }
+  .social a:hover { color: var(--ink); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; }
+  footer .wrap { display: flex; justify-content: space-between; font-size: 13px; color: var(--stone); flex-wrap: wrap; gap: 8px; }
+
+  :focus-visible { outline: 2px solid var(--moss); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="wordmark">Danielle Sedlacek</a>
+    <ul class="navlinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="hero-eyebrow">Danielle Sedlacek — Photography & Film</p>
+    <h1>Stories told in light, held still and in motion.</h1>
+    <p>I'm a photographer and filmmaker working across portraits, weddings, and brand film. Based wherever the light is good, and always up for the next story.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-solid">View the work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </section>
+
+  <section class="section wrap" id="work">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <p>A mix of stills and film. Replace each tile's background with your own image or embedded video.</p>
+    </div>
+    <div class="gallery">
+      <div class="tile tile-a t-wide"><div class="tile-cap"><span>Coastal Portrait Series</span><span class="kind">Photo</span></div></div>
+      <div class="tile tile-b t-tall"><div class="tile-cap"><span>Wren & Sam — Wedding</span><span class="kind">Photo</span></div></div>
+      <div class="tile tile-c t-sq t-video"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="tile-cap"><span>Brand Film, 2m10s</span><span class="kind">Film</span></div></div>
+      <div class="tile tile-a t-sq"><div class="tile-cap"><span>Studio Light Study</span><span class="kind">Photo</span></div></div>
+      <div class="tile tile-b t-wide t-video"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="tile-cap"><span>Documentary Short</span><span class="kind">Film</span></div></div>
+      <div class="tile tile-c t-sq"><div class="tile-cap"><span>Editorial, Autumn</span><span class="kind">Photo</span></div></div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="about">
+    <div class="about">
+      <div class="about-portrait"></div>
+      <div>
+        <h2>About</h2>
+        <p>Write a short, honest paragraph here about how you got into photography and film, and what draws you to the work — the light, the people, the stories you keep returning to.</p>
+        <p>Add a second paragraph on how you work with clients: your process, your pace, what someone can expect from a shoot day with you.</p>
+        <div class="stats">
+          <div class="stat"><b>120+</b><span>Projects shot</span></div>
+          <div class="stat"><b>8</b><span>Years behind the camera</span></div>
+          <div class="stat"><b>14</b><span>Countries worked in</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap contact" id="contact">
+    <h2>Let's make something together.</h2>
+    <div class="contact-row">
+      <a href="mailto:dani.sedlacek24@gmail.com" class="contact-email">dani.sedlacek24@gmail.com</a>
+      <ul class="social">
+        <li><a href="https://instagram.com/daniellegantly" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="#">Vimeo</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Danielle Sedlacek</span>
+    <span>Photography & Film</span>
+  </div>
+</footer>
+
+</body>
+</html>
